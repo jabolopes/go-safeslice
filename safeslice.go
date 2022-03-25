@@ -31,12 +31,12 @@ func copyDeleteFromArray[S ~[]T, T any](s S, i int) S {
 // slice being traversed does not observe the added / removed /
 // swapped elements.
 //
-// a := NewArray()
+// a := NewSafeSlice()
 // for _, x := range a.Get() {
 //   a.Append(...)  // SAFE
 // }
 //
-// a := NewArray()
+// a := NewSafeSlice()
 // for _, x := range a.Get() {
 //   a.Remove(0)  // SAFE
 // }
@@ -47,7 +47,7 @@ func copyDeleteFromArray[S ~[]T, T any](s S, i int) S {
 // 'snapshot' of the array on each call to the pair (Get, Remove), so
 // don't do this.
 //
-// a := NewArray()
+// a := NewSafeSlice()
 // for len(a.Get()) > 0 {
 //   a.Remove(0)  // INEFFICIENT; DON'T DO
 // }
@@ -55,7 +55,7 @@ func copyDeleteFromArray[S ~[]T, T any](s S, i int) S {
 // The following iteration however is NOT safe because each call to
 // 'Get' observes the removed elements.
 //
-// a := NewArray()
+// a := NewSafeSlice()
 // for i := 0; i < len(a.Get()); i++ {
 //   a.Remove(i)  // WRONG and UNSAFE
 // }
