@@ -17,12 +17,12 @@ slice being traversed does not observe the added / removed /
 swapped elements.
 
 ```go
-a := NewArray()
+a := NewSafeSlice()
 for _, x := range a.Get() {
   a.Append(...)  // SAFE
 }
 
-a := NewArray()
+a := NewSafeSlice()
 for _, x := range a.Get() {
   a.Remove(0)  // SAFE
 }
@@ -35,7 +35,7 @@ correct, it's extremely inefficient because this is forcing a
 don't do this.
 
 ```go
-a := NewArray()
+a := NewSafeSlice()
 for len(a.Get()) > 0 {
   a.Remove(0)  // INEFFICIENT; DON'T DO
 }
@@ -45,7 +45,7 @@ The following iteration however is NOT safe because each call to
 `Get` observes the removed elements.
 
 ```go
-a := NewArray()
+a := NewSafeSlice()
 for i := 0; i < len(a.Get()); i++ {
   a.Remove(i)  // WRONG and UNSAFE
 }
