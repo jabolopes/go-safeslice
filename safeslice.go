@@ -1,6 +1,6 @@
 package safeslice
 
-import "github.com/jabolopes/go-slice"
+import "golang.org/x/exp/slices"
 
 // copyDeleteFromArray functionally deletes index i from a. Returns
 // the newly allocated array without the removed element.
@@ -85,7 +85,7 @@ func (s *SafeSlice[T]) Remove(index int) {
 		return
 	}
 
-	s.data = slice.DeleteIndex(s.data, index)
+	s.data = slices.Delete(s.data, index, index+1)
 }
 
 // Swap swaps the elements at the given indices.
