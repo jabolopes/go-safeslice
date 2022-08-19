@@ -1,5 +1,7 @@
 # go-safeslice
 
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/jabolopes/go-safeslice)](https://pkg.go.dev/github.com/jabolopes/go-safeslice)
+
 SafeSlice is similar to a slice except it is safe for modification
 during range-based traversals.
 
