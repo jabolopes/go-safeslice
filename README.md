@@ -2,21 +2,33 @@
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/jabolopes/go-safeslice)](https://pkg.go.dev/github.com/jabolopes/go-safeslice)
 
-SafeSlice is similar to a slice except it is safe for modification
-during range-based traversals.
+SafeSlice is similar to a slice except it is safe for modification during
+range-based traversals.
 
-This is achieved by guaranteeing that there are no changes made to
-allocations of slices returned by previous calls to `Get`. That is,
-only new calls to `Get` will observe the elements added, removed, or
-swapped, to the array before that call to `Get`.
+This is achieved by guaranteeing that there are no changes made to allocations
+of slices returned by previous calls to `Get`. That is, only new calls to `Get`
+will observe the elements added, removed, or swapped, to the array before that
+call to `Get`.
 
 IMPORTANT: See the following examples for safe iteration.
 
-The Go language guarantees that the expression passed to `range` is
-evaluated only once. Therefore, the following iteration makes a
-single call to `Get` before the iteration begins. As such, the
-slice being traversed does not observe the added / removed /
-swapped elements.
+## Installation
+
+
+```sh
+$ go get github.com/jabolopes/go-safeslice
+```
+
+You can use `go get -u` to update the package. If you are using Go modules, you
+can also just import the package and it will be automatically downloaded on the
+first compilation.
+
+## Examples
+
+The Go language guarantees that the expression passed to `range` is evaluated
+only once. Therefore, the following iteration makes a single call to `Get`
+before the iteration begins. As such, the slice being traversed does not observe
+the added / removed / swapped elements.
 
 ```go
 a := NewSafeSlice()
